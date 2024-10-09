@@ -65,13 +65,10 @@ def play(type,hz,time):
         "7": 494
     }
     if type == "h":
-        print(f"高音 {hz}")
         pi.hardware_PWM(pwm_pin,hz_high[hz],int(time))
     elif type == 'm':
-        print(f"中音 {hz}")
         pi.hardware_PWM(pwm_pin,hz_mid[hz],int(time))
     else:
-        print(f"低音 {hz}")
         pi.hardware_PWM(pwm_pin,hz_low[hz],int(time))
 
 try:
@@ -85,7 +82,9 @@ try:
         else:
             if isPress1:
                 isPress1 = False
-                #
+                print("全家門鈴")
+                print("------------------------------")
+                print("3 1 5 1 2 5 2 3 2 5 1")
                 play('m','3',50000)
                 time.sleep(0.3)
                 play('m','1',50000)
@@ -110,8 +109,9 @@ try:
                 time.sleep(0.3)
                 play('m','1',50000)
                 time.sleep(0.3)
-                
-
+                stop_sound()
+                print("全家門鈴聲 stop..")
+                print("------------------------------")
         if b:
             if not isPress2:
                 isPress2 = True
@@ -119,6 +119,9 @@ try:
         else:
             if isPress2:
                 isPress2 = False
+                print("大悲咒")
+                print("------------------------------")
+                print("1 2 2 2 2 3 3 5 3 3 3 2")
                 play('m',"1",50000)
                 time.sleep(.3)
                 play('m',"2",50000)
@@ -170,6 +173,8 @@ try:
                 stop_sound()
                 time.sleep(.1)
                 stop_sound()
+                print("大悲咒 stop..")
+                print("------------------------------")
 finally:
     GPIO.cleanup()
 
